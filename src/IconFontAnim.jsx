@@ -43,8 +43,7 @@ class IconFontAnim extends Component {
       style.transform = 'perspective(200px)';
     }
     const key = this.newKeys();
-    const children = (<Icon type={props.type} style={style} key={key} />);
-    return children;
+    return props.type ? (<Icon type={props.type} style={style} key={key} />) : null;
   }
 
   getTweenType(type, typeName) {
