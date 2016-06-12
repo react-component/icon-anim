@@ -12,7 +12,7 @@ export function transformArguments(arg, key) {
   let result = arg;
   if (typeof arg === 'function') {
     result = arg({
-      key: key,
+      key,
     });
   }
   return result;

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Icon from 'antd/lib/icon';
 import { TweenOneGroup } from 'rc-tween-one';
 import animType from './animTypesIconFont';
-import { dataToArray, transformArguments } from './util';
+import { transformArguments } from './util';
 const noop = () => {
 };
 let keysNumber = 0;
@@ -36,11 +36,11 @@ class IconFontAnim extends Component {
   }
 
   getChildren(props) {
-    let style = {};
+    const style = {};
     if (typeof this.type[0] === 'string' &&
       this.type[0].indexOf('3d') &&
       this.type[0].indexOf('rotate') === 0) {
-      style.transform = 'perspective(200px)'
+      style.transform = 'perspective(200px)';
     }
     const key = this.newKeys();
     const children = (<Icon type={props.type} style={style} key={key} />);
@@ -50,13 +50,6 @@ class IconFontAnim extends Component {
   getTweenType(type, typeName) {
     return (animType[type] || type)[typeName];
   }
-
-  newKeys() {
-    const key = `${Date.now()}-${keysNumber}`;
-    keysNumber++;
-    return key;
-  }
-
 
   getAnimType(props) {
     this.type = transformArguments(props.animType);
@@ -76,6 +69,12 @@ class IconFontAnim extends Component {
     >
       {this.state.children}
     </TweenOneGroup>);
+  }
+
+  newKeys() {
+    const key = `${Date.now()}-${keysNumber}`;
+    keysNumber++;
+    return key;
   }
 
   render() {

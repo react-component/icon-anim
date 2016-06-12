@@ -27,7 +27,7 @@ const animTypeData = {
   right3dFlip: '右往左翻转切换',
   top3dFlip: '上往下翻转切换',
   bottom3dFlip: '下往上翻转切换',
-  rubberBand: '橡皮弹动切换'
+  rubberBand: '橡皮弹动切换',
 };
 
 class Demo extends React.Component {
@@ -44,15 +44,7 @@ class Demo extends React.Component {
     this.state = {
       type: this.defalutType,
       animType: 'rubberBand',
-    }
-  }
-
-  defaultTypeFunc(e) {
-    this.defalutType = e.target.value;
-  }
-
-  changeTypeFunc(e) {
-    this.changeType = e.target.value;
+    };
   }
 
   onChange(value) {
@@ -62,6 +54,14 @@ class Demo extends React.Component {
   onClick() {
     const type = this.state.type === this.defalutType ? this.changeType : this.defalutType;
     this.setState({ type });
+  }
+
+  defaultTypeFunc(e) {
+    this.defalutType = e.target.value;
+  }
+
+  changeTypeFunc(e) {
+    this.changeType = e.target.value;
   }
 
   render() {
@@ -91,7 +91,7 @@ class Demo extends React.Component {
               onChange={this.onChange}
             >
               {Object.keys(animTypeData).map(key =>
-                (<Option value={key} key={key}>{`${animTypeData[key]}进出-${key}`}</Option> )
+                (<Option value={key} key={key}>{`${animTypeData[key]}进出-${key}`}</Option>)
               )}
             </Select>
           </li>

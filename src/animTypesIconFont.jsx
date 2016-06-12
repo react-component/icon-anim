@@ -52,7 +52,7 @@ export default {
       duration: 300,
       scale: 0,
       opacity: 0,
-      ease: 'easeInBack'
+      ease: 'easeInBack',
     },
   },
   scaleBig: {
@@ -100,7 +100,7 @@ export default {
     leave: {
       rotateX: -90,
       duration: 300,
-    }
+    },
   },
   rotateY: {
     appear: {
@@ -117,7 +117,7 @@ export default {
     leave: {
       rotateY: -90,
       duration: 300,
-    }
+    },
   },
   alpha: {
     enter: {
@@ -198,7 +198,7 @@ export default {
       { scale: 1, duration: 120 },
     ],
     enter: [
-      { opacity: 0, duration: 0, scaleX: 1.15, scaleY: 0.85, },
+      { opacity: 0, duration: 0, scaleX: 1.15, scaleY: 0.85 },
       { delay: 310, duration: 0, opacity: 1 },
       { scaleX: 1.25, scaleY: 0.75, duration: 70, ease: 'linear' },
       { scaleX: 0.85, scaleY: 1.15, duration: 120, ease: 'linear' },
@@ -210,4 +210,4 @@ export default {
       { scaleX: 1.15, scaleY: 0.85, duration: 70, ease: 'linear' },
     ],
   },
-}
+};
