@@ -1,3 +1,5 @@
-import React from 'react';
-const IconAnim = React.createClass({});
-export default IconAnim;
+import IconFontAnim from './IconFontAnim';
+
+export default {
+  IconFontAnim,
+};
