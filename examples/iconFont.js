@@ -1,6 +1,5 @@
 // use jsx to render html, do not modify iconfont.html
 import 'rc-icon-anim/assets/antd-iconfont.less';
-import './assets/index.less';
 import './assets/iconfont.less';
 import IconAnim from 'rc-icon-anim';
 import React from 'react';
@@ -35,6 +34,7 @@ class Demo extends React.Component {
     super(...arguments);
     [
       'onClick',
+      'onOneClick',
       'onChange',
       'defaultTypeFunc',
       'changeTypeFunc',
@@ -44,6 +44,7 @@ class Demo extends React.Component {
     this.state = {
       type: this.defalutType,
       animType: 'rubberBand',
+      leavingStyle: '',
     };
   }
 
@@ -53,7 +54,17 @@ class Demo extends React.Component {
 
   onClick() {
     const type = this.state.type === this.defalutType ? this.changeType : this.defalutType;
-    this.setState({ type });
+    const leavingStyle = `
+.tween-one-leaving {
+  position: absolute;
+}`;
+    this.setState({ type, leavingStyle });
+  }
+
+  onOneClick() {
+    const type = this.state.type === this.defalutType ? '' : this.defalutType;
+    const leavingStyle = '';
+    this.setState({ type, leavingStyle });
   }
 
   defaultTypeFunc(e) {
@@ -67,6 +78,9 @@ class Demo extends React.Component {
   render() {
     return (
       <div style={{ height: 300, margin: 20 }}>
+        <style>
+          {this.state.leavingStyle}
+        </style>
         <IconFontAnim type={this.state.type}
           animType={this.state.animType}
           className="icon-font"
@@ -95,7 +109,12 @@ class Demo extends React.Component {
               )}
             </Select>
           </li>
-          <li><Button type="primary" onClick={this.onClick}>切换 ICON</Button></li>
+          <li>
+            <Button type="primary" onClick={this.onOneClick} style={{ marginRight: 10 }}>
+              单个切换
+            </Button>
+            <Button type="primary" onClick={this.onClick}>切换 ICON</Button>
+          </li>
         </ul>
       </div>
     );

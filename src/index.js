@@ -1,3 +1,6 @@
 // export this package's api
-import IconAnim from './IconAnim';
-export default IconAnim;
+import IconFontAnim from './IconFontAnim';
+
+export default {
+  IconFontAnim,
+};
