@@ -94,7 +94,7 @@ IconFontAnim.propTypes = {
 
 IconFontAnim.defaultProps = {
   component: 'div',
-  animType: ['left', 'right'],
+  animType: 'leftToRight',
   appear: true,
   onChange: noop,
 };
