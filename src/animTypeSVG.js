@@ -1,3 +1,6 @@
+const a = ['O', 'Moz', 'ms', 'Ms', 'Webkit'];
+const t = a.filter(key => `${key}Transform` in document.body.style)[0];
+
 export default {
   scale: {
     style: {
@@ -46,22 +49,22 @@ export default {
   ],
   lefttoright: [
     [
-      { d: 'M725,510L300,510', duration: 200 },
-      { d: 'M725,510L300,852', ease: 'easeOutBack', duration: 300 },
+      { d: 'M300,510L725,510', duration: 200 },
+      { d: 'M300,852L725,510', ease: 'easeOutBack', duration: 300 },
     ],
     [
-      { d: 'M725,510L300,510', duration: 200 },
-      { d: 'M725,510L300,172', ease: 'easeOutBack', duration: 300 },
+      { d: 'M300,510L725,510', duration: 200 },
+      { d: 'M300,172L725,510', ease: 'easeOutBack', duration: 300 },
     ],
   ],
   righttoleft: [
     [
-      { d: 'M725,510L300,510', duration: 200 },
-      { d: 'M725,852 L300,510', ease: 'easeOutBack', duration: 300 },
+      { d: 'M300,510L725,510', duration: 200 },
+      { d: 'M300,510L725,852', ease: 'easeOutBack', duration: 300 },
     ],
     [
-      { d: 'M725,510L300,510', duration: 200 },
-      { d: 'M725,172 L300,510', ease: 'easeOutBack', duration: 300 },
+      { d: 'M300,510L725,510', duration: 200 },
+      { d: 'M300,510L725,172', ease: 'easeOutBack', duration: 300 },
     ],
   ],
   plustocross: [
@@ -71,5 +74,93 @@ export default {
   crosstoplus: [
     { d: 'M160.5,512L863.616699,512', ease: 'easeOutBack' },
     { d: 'M509.5,165.5L509.5,859.66', ease: 'easeOutBack', delay: 100 },
+  ],
+  doublelefttodoubleright: [
+    [
+      { d: 'M136,510L889,510', duration: 200 },
+      { d: 'M136,172 L559,510', ease: 'easeOutBack', duration: 300 },
+    ],
+    [
+      { d: 'M136,510L889,510', duration: 200 },
+      { d: 'M136,852 L559,510', ease: 'easeOutBack', duration: 300 },
+    ],
+    [
+      { d: 'M466,510L889,510', duration: 200 },
+      { d: 'M466,852 L889,510', ease: 'easeOutBack', duration: 300 },
+    ],
+    [
+      { d: 'M466,510L889,510', duration: 200 },
+      { d: 'M466,172 L889,510', ease: 'easeOutBack', duration: 300 },
+    ],
+  ],
+  doublerighttodoubleleft: [
+    [
+      { d: 'M136,510L889,510', duration: 200 },
+      { d: 'M136,510 L559,172', ease: 'easeOutBack', duration: 300 },
+    ],
+    [
+      { d: 'M136,510L889,510', duration: 200 },
+      { d: 'M136,510 L559,852', ease: 'easeOutBack', duration: 300 },
+    ],
+    [
+      { d: 'M466,510L889,510', duration: 200 },
+      { d: 'M466,510 L889,172', ease: 'easeOutBack', duration: 300 },
+    ],
+    [
+      { d: 'M466,510L889,510', duration: 200 },
+      { d: 'M466,510 L889,852', ease: 'easeOutBack', duration: 300 },
+    ],
+  ],
+  caretdowntocaretup: [
+    [
+      { style: { rotate: 180, y: t === 'Moz' ? '0%' : '-33%' },
+        ease: 'easeOutBack', duration: 600,
+      },
+      {
+        d: 'M76.3,632.8l405.1-489.1c16.9-18.9,46.5-18.9,63.4,0l403.1,489.1' +
+        'c24.4,27.4,5,70.8-31.7,70.8H107.9C71.3,703.6,51.8,660.2,76.3,632.8z',
+        duration: 0,
+        style: { rotate: 0, y: '0%' },
+      },
+    ],
+  ],
+  caretuptocaretdown: [
+    [
+      { style: { rotate: 180, y: t === 'Moz' ? '0%' : '33%' },
+        ease: 'easeOutBack', duration: 600,
+      },
+      {
+        d: 'M76.3,392.3l403.1,489.1c16.9,18.9,46.5,18.9,63.4,0l405.1-489.1' +
+        'c24.4-27.4,5-70.8-31.7-70.8l-808.1,0C71.3,321.5,51.8,364.9,76.3,392.3z',
+        duration: 0,
+        style: { rotate: 0, y: '0%' },
+      },
+    ],
+  ],
+  caretlefttocaretright: [
+    [
+      { style: { rotate: 180, x: t === 'Moz' ? '0%' : '33%' },
+        ease: 'easeOutBack', duration: 600,
+      },
+      {
+        d: 'M392.7,76.3l489.1,403.1c18.9,16.9,18.9,46.5,0,63.4L392.7,947.7' +
+        'c-27.4,24.4-70.8,5-70.8-31.7V107.9C322,71.3,365.3,51.8,392.7,76.3z',
+        duration: 0,
+        style: { rotate: 0, x: '0%' },
+      },
+    ],
+  ],
+  caretrighttocaretleft: [
+    [
+      { style: { rotate: 180, x: t === 'Moz' ? '0%' : '-33%' },
+        ease: 'easeOutBack', duration: 600,
+      },
+      {
+        d: 'M631.3,76.3L142.1,479.3c-18.9,16.9-18.9,46.5,0,63.4l489.1,405.1' +
+        'c27.4,24.4,70.8,5,70.8-31.7V107.9C702,71.3,658.6,51.8,631.3,76.3z',
+        duration: 0,
+        style: { rotate: 0, x: '0%' },
+      },
+    ],
   ],
 };

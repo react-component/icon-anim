@@ -30,8 +30,8 @@ class IconSVGAnim extends Component {
       this.changeProps(nextProps, svgType[nextProps.type], type);
       return;
     }
-    const currentChildren = this.props.children;
-    const newChildren = nextProps.children;
+    const currentChildren = toArrayChildren(this.props.children);
+    const newChildren = toArrayChildren(nextProps.children);
     let childrenDiffer = currentChildren.length !== newChildren.length;
     if (!childrenDiffer) {
       toArrayChildren(currentChildren).forEach((item, i) => {
@@ -48,7 +48,7 @@ class IconSVGAnim extends Component {
 
   getStartChildren(props) {
     const svg = props.children || svgType[props.type];
-    return svg.map((item, i) => {
+    return toArrayChildren(svg).map((item, i) => {
       if (this.props.appear) {
         let animation = animType.scale;
         if (props.appearAnim && props.appearAnim[i]) {
@@ -185,6 +185,7 @@ a${rx},${ry} 0 0,1 ${rx},${-ry}z`,
     currentChildren.forEach((item, i) => {
       const d = item.props.animation ?
       item.props.animation.d || item.props.d : item.props.d;
+      const itemProps = { ...item.props };
       const toChildren = newChildren[i];
       const toChildrenProps = { ...(toChildren ? toChildren.props : {}) };
       let animation = {
@@ -203,7 +204,9 @@ a${rx},${ry} 0 0,1 ${rx},${-ry}z`,
         }
       }
       children.push(React.createElement(TweenOne,
-        { ...toChildrenProps, component: 'path', attr: 'attr', animation, d, key: i }
+        { ...(toChildren ? {} : itemProps), ...toChildrenProps,
+          component: 'path', attr: 'attr', animation, d, key: i,
+        }
       ));
     });
     // 多出的再行插入

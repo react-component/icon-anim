@@ -4,23 +4,33 @@ import './assets/iconfont.less';
 import IconAnim from 'rc-icon-anim';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Input from 'antd/lib/input';
+import Select from 'antd/lib/select';
 import Button from 'antd/lib/button';
-import 'antd/lib/input/style';
+import 'antd/lib/select/style';
 import 'antd/lib/button/style';
 import './assets/iconsvg.less';
 const IconSVGAnim = IconAnim.IconSVGAnim;
+const Option = Select.Option;
+
+const typeData = {
+  'cross-check': 'cross与check',
+  'up-down': 'up与down',
+  'left-right': 'left与right',
+  'plus-cross': 'plus与cross',
+  'doubleleft-doubleright': 'doubleleft与doubleright',
+  'caretdown-caretup': 'caretdown与caretup',
+  'caretleft-caretright': 'caretleft与caretright',
+};
 
 class Demo extends React.Component {
   constructor() {
     super(...arguments);
     [
       'onClick',
-      'defaultTypeFunc',
-      'changeTypeFunc',
+      'onChange',
     ].forEach((method) => this[method] = this[method].bind(this));
-    this.defalutType = 'left';
-    this.changeType = 'right';
+    this.defalutType = 'caretleft';
+    this.changeType = 'caretright';
     this.state = {
       type: this.defalutType,
     };
@@ -31,12 +41,13 @@ class Demo extends React.Component {
     this.setState({ type });
   }
 
-  defaultTypeFunc(e) {
-    this.defalutType = e.target.value;
-  }
-
-  changeTypeFunc(e) {
-    this.changeType = e.target.value;
+  onChange(value) {
+    const d = value.split('-');
+    this.defalutType = d[0];
+    this.changeType = d[1];
+    this.setState({
+      type: this.defalutType,
+    });
   }
 
   render() {
@@ -52,17 +63,20 @@ class Demo extends React.Component {
           {style}
         </style>
         <IconSVGAnim type={this.state.type}
-          animType={this.state.animType}
           className="icon-svg"
         />
         <ul className="icon-font-demo-ul">
           <li>
-            icon 默认样式：
-            <Input defaultValue={this.defalutType} onBlur={this.defaultTypeFunc} />
-          </li>
-          <li>
-            icon 切换样式：
-            <Input defaultValue={this.changeType} onBlur={this.changeTypeFunc} />
+            icon 样式：
+            <Select style={{ width: 250 }}
+              placeholder="请选择"
+              defaultValue={`${this.defalutType}to${this.changeType}`}
+              onChange={this.onChange}
+            >
+              {Object.keys(typeData).map(key =>
+                (<Option value={key} key={key}>{`${typeData[key]}切换`}</Option>)
+              )}
+            </Select>
           </li>
           <li>
             <Button type="primary" onClick={this.onClick}>切换 ICON</Button>
