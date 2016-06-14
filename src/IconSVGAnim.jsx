@@ -21,7 +21,7 @@ class IconSVGAnim extends Component {
     const children = this.getStartChildren(this.props);
     this.state = {
       children,
-    }
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -44,7 +44,137 @@ class IconSVGAnim extends Component {
     if (childrenDiffer) {
       this.changeProps(nextProps, newChildren);
     }
-  };
+  }
+
+  getStartChildren(props) {
+    const svg = props.children || svgType[props.type];
+    return svg.map((item, i) => {
+      if (this.props.appear) {
+        let animation = animType.scale;
+        if (props.appearAnim && props.appearAnim[i]) {
+          animation = props.appearAnim[i];
+        } else if (!animType[props.type]) {
+          animation = { ...animation, delay: i * 100 };
+        }
+        return React.createElement(TweenOne, {
+          ...this.allToPath(item),
+          animation,
+          component: 'path',
+          key: item.key || i,
+          attr: 'attr',
+        });
+      }
+      return React.cloneElement(item, { key: item.key || i });
+    });
+  }
+
+  allToPath(item) {
+    const props = { ...item.props };
+    if (typeof item.type !== 'string') {
+      throw new Error('svg tag error.');
+    }
+    const name = item.type.toUpperCase();
+    let cx;
+    let cy;
+    let rx;
+    let ry;
+    switch (name) {
+      case 'CIRCLE': {
+        cx = parseFloat(props.cx);
+        cy = parseFloat(props.cy);
+        const r = parseFloat(props.r);
+        delete props.cx;
+        delete props.cy;
+        delete props.r;
+        return {
+          ...props,
+          d: `M${cx - r},${cy} a${r},${r} 0 1,0 ${r * 2},0a${r},${r} 0 1,0 ${-r * 2},0z`,
+        };
+      }
+      case 'ELLIPSE': {
+        cx = parseFloat(props.cx);
+        cy = parseFloat(props.cy);
+        rx = parseFloat(props.rx);
+        ry = parseFloat(props.ry);
+        delete props.cx;
+        delete props.cy;
+        delete props.rx;
+        delete props.ry;
+        return {
+          ...props,
+          d: `M${cx - rx},${cy}a${rx},${ry} 0 1,0 ${rx * 2},0a${rx},${ry} 0 1,0 ${-rx * 2},0z`,
+        };
+      }
+      case 'RECT': {
+        const x = parseFloat(props.x);
+        const y = parseFloat(props.y);
+        const w = parseFloat(props.width);
+        const h = parseFloat(props.height);
+        rx = parseFloat(props.rx);
+        ry = parseFloat(props.ry);
+        delete props.x;
+        delete props.y;
+        delete props.width;
+        delete props.height;
+        delete props.rx;
+        delete props.ry;
+        if (!rx && !ry) {
+          return { d: `M${x},${y}l${w},0l0,${h}l${-w},0z` };
+        }
+        return {
+          ...props,
+          d: `M${x + rx},${y}
+l${w - rx * 2},0
+a${rx},${ry} 0 0,1 ${rx},${ry}
+l0,${h - ry * 2}
+a${rx},${ry} 0 0,1 ${-rx},${ry}
+l${rx * 2 - w},0
+a${rx},${ry} 0 0,1 ${-rx},${-ry}
+l0,${ry * 2 - h}
+a${rx},${ry} 0 0,1 ${rx},${-ry}z`,
+        };
+      }
+      case 'POLYGON': {
+        const points = parseFloat(props.points);
+        delete props.points;
+        const p = points.split(/\s+/);
+        let path = '';
+        for (let i = 0; i < p.length; i++) {
+          path += (i && 'L' || 'M') + p[i];
+        }
+        return { ...props, d: `${path}z` };
+      }
+      case 'LINE': {
+        const x1 = parseFloat(props.x1);
+        const x2 = parseFloat(props.x2);
+        const y1 = parseFloat(props.y1);
+        const y2 = parseFloat(props.y2);
+        delete props.x1;
+        delete props.x2;
+        delete props.y1;
+        delete props.y2;
+        return { ...props, d: `M${x1},${y1}L${x2},${y2}z` };
+      }
+      default: {
+        return { ...props };
+      }
+    }
+  }
+
+  tweenEndRemove(key) {
+    const children = this.state.children.map(item => {
+      if (!item) {
+        return null;
+      }
+      if (parseFloat(item.key) !== key) {
+        return item;
+      }
+      return null;
+    }).filter(item => item);
+    this.setState({
+      children,
+    });
+  }
 
   changeProps(nextProps, newChild, type) {
     const currentChildren = this.state.children;
@@ -57,7 +187,10 @@ class IconSVGAnim extends Component {
       item.props.animation.d || item.props.d : item.props.d;
       const toChildren = newChildren[i];
       const toChildrenProps = { ...(toChildren ? toChildren.props : {}) };
-      let animation = { style: { scale: 0, opacity: 0 }, onComplete: this.tweenEndRemove.bind(this, i) };
+      let animation = {
+        style: { scale: 0, opacity: 0 },
+        onComplete: this.tweenEndRemove.bind(this, i),
+      };
       if (toChildren) {
         if (nextProps.animation && nextProps.animation[i]) {
           animation = nextProps.animation[i];
@@ -92,129 +225,6 @@ class IconSVGAnim extends Component {
       });
     }
     this.setState({ children });
-  }
-
-  tweenEndRemove(key) {
-    const children = this.state.children.map(item => {
-      if (!item) {
-        return;
-      }
-      if (parseFloat(item.key) !== key) {
-        return item;
-      }
-    }).filter(item => item);
-    this.setState({
-      children,
-    });
-  }
-
-  allToPath(item) {
-    const props = { ...item.props };
-    if (typeof item.type !== 'string') {
-      throw new Error('svg tag error.');
-    }
-    const name = item.type.toUpperCase();
-    let cx;
-    let cy;
-    let rx;
-    let ry;
-    switch (name) {
-      case 'CIRCLE':
-        cx = parseFloat(props.cx);
-        cy = parseFloat(props.cy);
-        const r = parseFloat(props.r);
-        delete props.cx;
-        delete props.cy;
-        delete props.r;
-        return {
-          ...props,
-          d: `M${cx - r},${cy} a${r},${r} 0 1,0 ${r * 2},0a${r},${r} 0 1,0 ${-r * 2},0z`,
-        };
-      case 'ELLIPSE':
-        cx = parseFloat(props.cx);
-        cy = parseFloat(props.cy);
-        rx = parseFloat(props.rx);
-        ry = parseFloat(props.ry);
-        delete props.cx;
-        delete props.cy;
-        delete props.rx;
-        delete props.ry;
-        return {
-          ...props,
-          d: `M${cx - rx},${cy}a${rx},${ry} 0 1,0 ${rx * 2},0a${rx},${ry} 0 1,0 ${-rx * 2},0z`,
-        };
-      case 'RECT':
-        const x = parseFloat(props.x);
-        const y = parseFloat(props.y);
-        const w = parseFloat(props.width);
-        const h = parseFloat(props.height);
-        rx = parseFloat(props.rx);
-        ry = parseFloat(props.ry);
-        delete props.x;
-        delete props.y;
-        delete props.width;
-        delete props.height;
-        delete props.rx;
-        delete props.ry;
-        if (!rx && !ry) {
-          return { d: `M${x},${y}l${w},0l0,${h}l${-w},0z` };
-        }
-        return {
-          ...props,
-          d: `M${x + rx},${y}
-l${w - rx * 2},0
-a${rx},${ry} 0 0,1 ${rx},${ry}
-l0,${h - ry * 2}
-a${rx},${ry} 0 0,1 ${-rx},${ry}
-l${rx * 2 - w},0
-a${rx},${ry} 0 0,1 ${-rx},${-ry}
-l0,${ry * 2 - h}
-a${rx},${ry} 0 0,1 ${rx},${-ry}z`,
-        };
-      case 'POLYGON':
-        const points = parseFloat(props.points);
-        delete props.points;
-        const p = points.split(/\s+/);
-        let path = '';
-        for (let i = 0; i < p.length; i++) {
-          path += (i && 'L' || 'M') + p[i];
-        }
-        return { ...props, d: `${path}z` };
-      case 'LINE':
-        const x1 = parseFloat(props.x1);
-        const x2 = parseFloat(props.x2);
-        const y1 = parseFloat(props.y1);
-        const y2 = parseFloat(props.y2);
-        delete props.x1;
-        delete props.x2;
-        delete props.y1;
-        delete props.y2;
-        return { ...props, d: `M${x1},${y1}L${x2},${y2}z` };
-      default:
-        return { ...props };
-    }
-  }
-
-  getStartChildren(props) {
-    const svg = props.children || svgType[props.type];
-    return svg.map((item, i) => {
-      if (this.props.appear) {
-        let animation = animType.scale;
-        if (props.appearAnim && props.appearAnim[i]) {
-          animation = props.appearAnim[i];
-        } else if (!animType[props.type]) {
-          animation = { ...animation, delay: i * 100 };
-        }
-        return React.createElement(TweenOne, {
-          ...this.allToPath(item),
-          animation,
-          component: 'path',
-          key: item.key || i,
-          attr: 'attr',
-        })
-      }
-      return React.cloneElement(item, { key: item.key || i });
-    });
   }
 
   render() {

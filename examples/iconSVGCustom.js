@@ -4,7 +4,6 @@ import './assets/iconfont.less';
 import IconAnim from 'rc-icon-anim';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Input from 'antd/lib/input';
 import Button from 'antd/lib/button';
 import 'antd/lib/input/style';
 import 'antd/lib/button/style';
@@ -43,17 +42,17 @@ class Demo extends React.Component {
       animation = [
         { d: 'M229.5,229.5L794.5,794.5', ease: 'easeOutBack' },
         { d: 'M794.5,229.5L229.5,794.5', ease: 'easeOutBack', delay: 100 },
-      ]
+      ];
     } else {
       type = '+';
       children = [
         <path d="M160.5,512L863.61,512" strokeWidth="79" key="a0" />,
         <path d="M509.5,165.5L509.5,859.66" strokeWidth="79" key="a1" />,
-      ]
+      ];
       animation = [
         { d: 'M160.5,512L863.616699,512', ease: 'easeOutBack' },
         { d: 'M509.5,165.5L509.5,859.66', ease: 'easeOutBack', delay: 100 },
-      ]
+      ];
     }
     this.setState({ type, children, animation });
   }
@@ -73,8 +72,8 @@ class Demo extends React.Component {
         <IconSVGAnim
           className="icon-svg"
           appearAnim={[
-            { style:{ SVGDraw: 0, opacity: 0 }, type: 'from' },
-            { style:{ SVGDraw: 0, opacity: 0 }, delay: 100, type: 'from' }
+            { style: { SVGDraw: 0, opacity: 0 }, type: 'from' },
+            { style: { SVGDraw: 0, opacity: 0 }, delay: 100, type: 'from' },
           ]}
           animation={this.state.animation}
         >

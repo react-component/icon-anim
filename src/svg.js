@@ -2,7 +2,7 @@ import React from 'react';
 export default {
   cross: [
     <path d="M229.5,229.5 L794.5,794.5" strokeWidth="79" />,
-    <path d="M794.5,229.5 L229.5,794.5" strokeWidth="79" />
+    <path d="M794.5,229.5 L229.5,794.5" strokeWidth="79" />,
   ],
   check: [
     <path d="M168.5,497.5 L327.5,777.5" strokeWidth="79" />,
@@ -27,5 +27,5 @@ export default {
   plus: [
     <path d="M160.5,512L863.61,512" strokeWidth="79" />,
     <path d="M509.5,165.5L509.5,859.66" strokeWidth="79" />,
-  ]
-}
+  ],
+};

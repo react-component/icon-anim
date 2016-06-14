@@ -32,7 +32,7 @@ export default {
     [
       { d: 'M511.5,722.5L511.5,299.5', duration: 200 },
       { d: 'M511.5,722.5L852.5,300.5', ease: 'easeOutBack', duration: 350 },
-    ]
+    ],
   ],
   downtoup: [
     [
@@ -52,7 +52,7 @@ export default {
     [
       { d: 'M725,510L300,510', duration: 200 },
       { d: 'M725,510L300,172', ease: 'easeOutBack', duration: 300 },
-    ]
+    ],
   ],
   righttoleft: [
     [
@@ -62,7 +62,7 @@ export default {
     [
       { d: 'M725,510L300,510', duration: 200 },
       { d: 'M725,172 L300,510', ease: 'easeOutBack', duration: 300 },
-    ]
+    ],
   ],
   plustocross: [
     { d: 'M229.5,229.5L794.5,794.5', ease: 'easeOutBack' },
@@ -71,5 +71,5 @@ export default {
   crosstoplus: [
     { d: 'M160.5,512L863.616699,512', ease: 'easeOutBack' },
     { d: 'M509.5,165.5L509.5,859.66', ease: 'easeOutBack', delay: 100 },
-  ]
+  ],
 };
