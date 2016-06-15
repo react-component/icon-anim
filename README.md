@@ -87,6 +87,5 @@ React.render(<IconSVGAnim type="left" />, container);
 |  type      | string   |   null       | provide: [svg](https://github.com/react-component/icon-anim/blob/master/src/svg.js)  |
 |  children  | React.Element |  null   | children can not coexist with the type,  Normative References [svg](https://github.com/react-component/icon-anim/blob/master/src/svg.js) |
 |  appear    |  bool  | true   | appear anim  | 
-|  animType  | string | null   |  animation of a single element, provide: [animTypeSVG](https://github.com/react-component/icon-anim/blob/master/src/animTypeSVG.js) |
-|  animation | array  | null   | animType of Custom, is null we will use [`scale`](https://github.com/react-component/icon-anim/blob/master/src/animTypeSVG.js#L5) |
+|  animation | array  | null   | animType default provide: [animTypeSVG](https://github.com/react-component/icon-anim/blob/master/src/animTypeSVG.js), is null we will use [`scale`](https://github.com/react-component/icon-anim/blob/master/src/animTypeSVG.js#L5) |
 |  viewBox   | string   | '0 0 1024 1024' | svg viewBox |
