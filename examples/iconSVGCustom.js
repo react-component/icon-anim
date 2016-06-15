@@ -23,8 +23,8 @@ class Demo extends React.Component {
       ],
       type: '+',
       animation: [
-        { d: 'M229.5,229.5L794.5,794.5', ease: 'easeOutBack' },
-        { d: 'M794.5,229.5L229.5,794.5', ease: 'easeOutBack', delay: 100 },
+        { style: { SVGDraw: 0, opacity: 0 }, type: 'from' },
+        { style: { SVGDraw: 0, opacity: 0 }, delay: 100, type: 'from' },
       ],
     };
   }
@@ -71,10 +71,6 @@ class Demo extends React.Component {
         </style>
         <IconSVGAnim
           className="icon-svg"
-          appearAnim={[
-            { style: { SVGDraw: 0, opacity: 0 }, type: 'from' },
-            { style: { SVGDraw: 0, opacity: 0 }, delay: 100, type: 'from' },
-          ]}
           animation={this.state.animation}
         >
           {this.state.children}

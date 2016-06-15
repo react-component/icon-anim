@@ -3,8 +3,6 @@ import Icon from 'antd/lib/icon';
 import { TweenOneGroup } from 'rc-tween-one';
 import animType from './animTypesIconFont';
 import { transformArguments } from './util';
-const noop = () => {
-};
 let keysNumber = 0;
 class IconFontAnim extends Component {
   constructor() {
@@ -86,7 +84,6 @@ IconFontAnim.propTypes = {
   component: PropTypes.any,
   children: PropTypes.any,
   style: PropTypes.object,
-  onChange: PropTypes.func,
   type: PropTypes.string,
   animType: PropTypes.any,
   appear: PropTypes.bool,
@@ -96,6 +93,5 @@ IconFontAnim.defaultProps = {
   component: 'div',
   animType: 'leftToRight',
   appear: true,
-  onChange: noop,
 };
 export default IconFontAnim;

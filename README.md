@@ -10,9 +10,6 @@ React IconAnim Component
 [![gemnasium deps][gemnasium-image]][gemnasium-url]
 [![node version][node-image]][node-url]
 [![npm download][download-image]][download-url]
-[![Sauce Test Status](https://saucelabs.com/buildstatus/rc-icon-anim)](https://saucelabs.com/u/rc-icon-anim)
-
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/rc-icon-anim.svg)](https://saucelabs.com/u/rc-icon-anim)
 
 [npm-image]: http://img.shields.io/npm/v/rc-icon-anim.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/rc-icon-anim
@@ -32,11 +29,7 @@ React IconAnim Component
 
 |![IE](https://raw.github.com/alrra/browser-logos/master/internet-explorer/internet-explorer_48x48.png) | ![Chrome](https://raw.github.com/alrra/browser-logos/master/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/firefox/firefox_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/safari/safari_48x48.png)|
 | --- | --- | --- | --- | --- |
-| IE 8+ ✔ | Chrome 31.0+ ✔ | Firefox 31.0+ ✔ | Opera 30.0+ ✔ | Safari 7.0+ ✔ |
-
-## Screenshots
-
-<img src="" width="288"/>
+| IE 9+ ✔ | Chrome 31.0+ ✔ | Firefox 31.0+ ✔ | Opera 30.0+ ✔ | Safari 7.0+ ✔ |
 
 
 ## Development
@@ -54,13 +47,6 @@ http://localhost:8030/examples/
 online example: http://react-component.github.io/icon-anim/
 
 
-## Feature
-
-* support ie8,ie8+,chrome,firefox,safari
-
-### Keyboard
-
-
 ## install
 
 
@@ -69,44 +55,38 @@ online example: http://react-component.github.io/icon-anim/
 
 ## Usage
 
+## IconFontAnim 
 ```js
-var IconAnim = require('rc-icon-anim');
-var React = require('react');
-React.render(<IconAnim />, container);
+import IconAnim from 'rc-icon-anim';
+const IconFontAnim = IconAnim.IconFontAnim;
+React.render(<IconFontAnim type="left" />, container);
+```
+
+## IconSVGAim
+```js
+import IconAnim from 'rc-icon-anim';
+const IconSVGAnim = IconAnim.IconSVGAnim;
+React.render(<IconSVGAnim type="left" />, container);
 ```
 
 ## API
 
-### props
+### IconFontAnim
 
-<table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th style="width: 100px;">name</th>
-        <th style="width: 50px;">type</th>
-        <th style="width: 50px;">default</th>
-        <th>description</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>className</td>
-          <td>String</td>
-          <td></td>
-          <td>additional css class of root dom node</td>
-        </tr>
-    </tbody>
-</table>
+|    name    |   type   |   default    |      description      |
+|------------|----------|--------------|-----------------------|
+|  type      | string   |  null        |  antd of icon name    |
+|  appear    | bool     | true         | appear anim   |
+|  animType  | string / object | `leftToRight` | animate type, provide : `alpha` `leftToRight` `rightToLeft` `scale` `scaleBack` `scaleBig` `rotate` `rotateX` `rotateY` `left3dFlip` `right3dFlip` `top3dFlip` `bottom3dFlip` `rubberBand`; <br/> if the is object: { appear, enter, leave }, appear is null, with enter; |
+| component  | string / React.Element | `div` | component tag |
 
+### IconSVGAnim 
 
-## Test Case
-
-http://localhost:8030/tests/runner.html?coverage
-
-## Coverage
-
-http://localhost:8030/node_modules/rc-server/node_modules/node-jscover/lib/front-end/jscoverage.html?w=http://localhost:8030/tests/runner.html?coverage
-
-## License
-
-rc-icon-anim is released under the MIT license.
+|    name    |   type   |   default    |      description      |
+|------------|----------|--------------|-----------------------|
+|  type      | string   |   null       | provide: [svg](https://github.com/react-component/icon-anim/blob/master/src/svg.js)  |
+|  children  | React.Element |  null   | children can not coexist with the type,  Normative References [svg](https://github.com/react-component/icon-anim/blob/master/src/svg.js) |
+|  appear    |  bool  | true   | appear anim  | 
+|  animType  | string | null   |  animation of a single element, provide: [animTypeSVG](https://github.com/react-component/icon-anim/blob/master/src/animTypeSVG.js) |
+|  animation | array  | null   | animType of Custom, is null we will use [`scale`](https://github.com/react-component/icon-anim/blob/master/src/animTypeSVG.js#L5) |
+|  viewBox   | string   | '0 0 1024 1024' | svg viewBox |

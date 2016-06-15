@@ -8,8 +8,6 @@ import { toArrayChildren } from './util';
 
 TweenOne.plugins.push(morphPlugin);
 TweenOne.plugins.push(SvgDrawPlugin);
-const noop = () => {
-};
 
 class IconSVGAnim extends Component {
   constructor() {
@@ -51,8 +49,8 @@ class IconSVGAnim extends Component {
     return toArrayChildren(svg).map((item, i) => {
       if (this.props.appear) {
         let animation = animType.scale;
-        if (props.appearAnim && props.appearAnim[i]) {
-          animation = props.appearAnim[i];
+        if (props.animation && props.animation[i]) {
+          animation = props.animation[i];
         } else if (!animType[props.type]) {
           animation = { ...animation, delay: i * 100 };
         }
@@ -244,18 +242,12 @@ a${rx},${ry} 0 0,1 ${rx},${-ry}z`,
 }
 
 IconSVGAnim.propTypes = {
-  className: PropTypes.string,
   children: PropTypes.any,
-  style: PropTypes.object,
   viewBox: PropTypes.string,
-  width: PropTypes.any,
-  height: PropTypes.any,
-  onChange: PropTypes.func,
   type: PropTypes.any,
-  animType: PropTypes.any,
+  animType: PropTypes.string,
   appear: PropTypes.bool,
-  appearAnim: PropTypes.any,
-  animation: PropTypes.any,
+  animation: PropTypes.array,
 };
 
 IconSVGAnim.defaultProps = {
@@ -263,7 +255,6 @@ IconSVGAnim.defaultProps = {
   viewBox: '0 0 1024 1024',
   width: 100,
   height: 100,
-  onChange: noop,
 };
 
 export default IconSVGAnim;
