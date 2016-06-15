@@ -1,6 +1,4 @@
 // use jsx to render html, do not modify iconsvg.html
-import 'rc-icon-anim/assets/antd-iconfont.less';
-import './assets/iconfont.less';
 import IconAnim from 'rc-icon-anim';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -60,7 +58,7 @@ class Demo extends React.Component {
             <path d="M509.5,165.5L509.5,859.66" strokeWidth="79" key="a1" />,
           ] : null}
         </IconSVGAnim>
-        <ul className="icon-font-demo-ul">
+        <ul className="icon-svg-demo-ul">
           <li>
             <Button type="primary" onClick={this.onClick}>切换 ICON</Button>
           </li>

@@ -1,5 +1,5 @@
 // use jsx to render html, do not modify iconfont.html
-import 'rc-icon-anim/assets/antd-iconfont.less';
+import './assets/antd-iconfont.less';
 import './assets/iconfont.less';
 import IconAnim from 'rc-icon-anim';
 import React from 'react';

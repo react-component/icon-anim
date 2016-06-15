@@ -1,6 +1,4 @@
 // use jsx to render html, do not modify iconsvg.html
-import 'rc-icon-anim/assets/antd-iconfont.less';
-import './assets/iconfont.less';
 import IconAnim from 'rc-icon-anim';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -67,7 +65,7 @@ class Demo extends React.Component {
         <IconSVGAnim type={this.state.type}
           className="icon-svg"
         />
-        <ul className="icon-font-demo-ul">
+        <ul className="icon-svg-demo-ul">
           <li>
             icon 样式：
             <Select style={{ width: 250 }}
