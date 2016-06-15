@@ -68,6 +68,7 @@ describe('icon-svg', () => {
     });
     setTimeout(() => {
       const child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
+      console.log(child[0].style);
       const scale = child[0].style.transform.split('scale(')[1].split(')')[0].split(',');
       console.log(scale);
       expect(scale.length).to.be(2);
