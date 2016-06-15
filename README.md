@@ -77,7 +77,7 @@ React.render(<IconSVGAnim type="left" />, container);
 |------------|----------|--------------|-----------------------|
 |  type      | string   |  null        |  antd of icon name    |
 |  appear    | bool     | true         | appear anim   |
-|  animType  | string / object | `leftToRight` | animate type, provide : `alpha` `leftToRight` `rightToLeft` `scale` `scaleBack` `scaleBig` `rotate` `rotateX` `rotateY` `left3dFlip` `right3dFlip` `top3dFlip` `bottom3dFlip` `rubberBand`; <br/> if the is object: { appear, enter, leave }, appear is null, with enter; |
+|  animType  | string / object | `leftToRight` | animate type, provide : `alpha` `leftToRight` `rightToLeft` `scale` `scaleBack` `scaleBig` `rotate` `rotateX` `rotateY` `left3dFlip` `right3dFlip` `top3dFlip` `bottom3dFlip` `rubberBand`; <br/> if the is object: { appear, enter, leave }, appear is null, with enter,[refer](https://github.com/react-component/icon-anim/blob/master/src/animTypesIconFont.jsx); |
 | component  | string / React.Element | `div` | component tag |
 
 ### IconSVGAnim 
