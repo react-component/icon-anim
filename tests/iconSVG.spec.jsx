@@ -59,7 +59,7 @@ describe('icon-svg', () => {
     });
     console.log(instance);
     const child = TestUtils.findRenderedDOMComponentWithTag(instance, 'svg');
-    console.log(child);
+    console.log(child.children);
     console.log(`child path length: ${child.children.length}`);
     expect(child.children.length).to.be(2);
   });
