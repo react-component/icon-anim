@@ -3,44 +3,40 @@ webpackJsonp([1],{
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(276);
+	module.exports = __webpack_require__(275);
 
 
 /***/ },
 
-/***/ 275:
-2,
+/***/ 274:
+268,
 
-/***/ 276:
+/***/ 275:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"rc-icon-anim/assets/antd-iconfont.less\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	
-	__webpack_require__(2);
-	
-	var _rcIconAnim = __webpack_require__(3);
+	var _rcIconAnim = __webpack_require__(2);
 	
 	var _rcIconAnim2 = _interopRequireDefault(_rcIconAnim);
 	
-	var _react = __webpack_require__(6);
+	var _react = __webpack_require__(5);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(41);
+	var _reactDom = __webpack_require__(40);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _button = __webpack_require__(265);
+	var _button = __webpack_require__(264);
 	
 	var _button2 = _interopRequireDefault(_button);
 	
-	__webpack_require__(271);
+	__webpack_require__(270);
 	
-	__webpack_require__(273);
+	__webpack_require__(272);
 	
-	__webpack_require__(275);
+	__webpack_require__(274);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -110,7 +106,7 @@ webpackJsonp([1],{
 	      ),
 	      _react2.default.createElement(
 	        'ul',
-	        { className: 'icon-font-demo-ul' },
+	        { className: 'icon-svg-demo-ul' },
 	        _react2.default.createElement(
 	          'li',
 	          null,

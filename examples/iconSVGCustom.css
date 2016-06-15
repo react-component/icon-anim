@@ -2,5 +2,12 @@
   stroke: #000;
   stroke-linecap: round;
 }
+.icon-svg-demo-ul {
+  margin-top: 20px;
+  text-align: center;
+}
+.icon-svg-demo-ul li {
+  margin-top: 10px;
+}
 
 /*# sourceMappingURL=iconSVGCustom.css.map*/
