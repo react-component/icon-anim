@@ -57,21 +57,19 @@ describe('icon-svg', () => {
       type: 'left',
       appear: false,
     });
-    console.log(instance);
-    const child = TestUtils.findRenderedDOMComponentWithTag(instance, 'svg');
-    console.log(child.children);
-    console.log(`child path length: ${child.children.length}`);
-    expect(child.children.length).to.be(2);
+    const child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
+    console.log(child);
+    console.log(`child path length: ${child.length}`);
+    expect(child.length).to.be(2);
   });
 
   it('icon-svg-anim default animType is scale', (done) => {
     instance = createIconFontAnim({
       type: 'left',
     });
-    const child = TestUtils.findRenderedDOMComponentWithTag(instance, 'svg');
+    const child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
     setTimeout(() => {
-      const a = child.children[0];
-      const scale = a.style.transform.split('scale(')[1].split(')')[0].split(',');
+      const scale = child[0].style.transform.split('scale(')[1].split(')')[0].split(',');
       console.log(scale);
       expect(scale.length).to.be(2);
       done();
@@ -82,12 +80,12 @@ describe('icon-svg', () => {
     instance = createIconFontAnim({
       type: 'left',
     });
-    const child = TestUtils.findRenderedDOMComponentWithTag(instance, 'svg');
     setTimeout(() => {
       instance.setState({ type: 'doubleleft' });
       setTimeout(() => {
-        console.log(`left to doubleleft length is: ${child.children.length}`);
-        expect(child.children.length).to.be(4);
+        const child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
+        console.log(`left to doubleleft length is: ${child.length}`);
+        expect(child.length).to.be(4);
         done();
       }, 100);
     }, 500);
@@ -100,8 +98,8 @@ describe('icon-svg', () => {
         <path d="M300,510L725,852" strokeWidth="87" key="a1" />,
       ],
     });
-    const child = TestUtils.findRenderedDOMComponentWithTag(instance, 'svg');
-    expect(child.children.length).to.be(2);
+    let child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
+    expect(child.length).to.be(2);
     setTimeout(() => {
       instance.setState({
         children: [
@@ -111,7 +109,8 @@ describe('icon-svg', () => {
           <path d="M466,510 L889,852" strokeWidth="87" key="b3" />,
         ],
       });
-      expect(child.children.length).to.be(4);
+      child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
+      expect(child.length).to.be(4);
       done();
     }, 500);
   });
@@ -124,13 +123,13 @@ describe('icon-svg', () => {
         { style: { left: 100 }, type: 'from' },
       ],
     });
-    const child = TestUtils.findRenderedDOMComponentWithTag(instance, 'svg');
-    const children = child.children[0];
-    console.log(children.style.left);
-    expect(parseFloat(children.style.left)).to.be(100);
+    let child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
+    console.log(child[0].style.left);
+    expect(parseFloat(child[0].style.left)).to.be(100);
     setTimeout(() => {
-      console.log(children.style.left);
-      expect(parseFloat(children.style.left)).to.be(0);
+      child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
+      console.log(child[0].style.left);
+      expect(parseFloat(child[0].style.left)).to.be(0);
       instance.setState({
         type: 'right',
         animation: [
@@ -138,11 +137,12 @@ describe('icon-svg', () => {
           { style: { top: 100 } },
         ],
       });
-      console.log(children.style.top);
-      expect(parseFloat(children.style.top)).to.be(0);
+      console.log(child[0].style.top);
+      expect(parseFloat(child[0].style.top)).to.be(0);
       setTimeout(() => {
-        console.log(children.style.top);
-        expect(parseFloat(children.style.top)).to.be(100);
+        child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
+        console.log(child[0].style.top);
+        expect(parseFloat(child[0].style.top)).to.be(100);
         done();
       }, 500);
     }, 500);
