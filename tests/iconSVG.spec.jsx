@@ -58,7 +58,6 @@ describe('icon-svg', () => {
       appear: false,
     });
     const child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
-    console.log(child);
     console.log(`child path length: ${child.length}`);
     expect(child.length).to.be(2);
   });
@@ -67,8 +66,8 @@ describe('icon-svg', () => {
     instance = createIconFontAnim({
       type: 'left',
     });
-    const child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
     setTimeout(() => {
+      const child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
       const scale = child[0].style.transform.split('scale(')[1].split(')')[0].split(',');
       console.log(scale);
       expect(scale.length).to.be(2);
