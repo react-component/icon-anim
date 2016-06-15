@@ -5,6 +5,17 @@ import IconAnim from '../index';
 import expect from 'expect.js';
 import TestUtils from 'react-addons-test-utils';
 const IconSVGAnim = IconAnim.IconSVGAnim;
+
+export function checkStyleName(p) {
+  const a = ['O', 'Moz', 'ms', 'Ms', 'Webkit'];
+  if (p !== 'filter' && p in document.body.style) {
+    return p;
+  }
+  const _p = p.charAt(0).toUpperCase() + p.substr(1);
+  return `${a.filter(key => `${key}${_p}` in document.body.style)[0] || ''}${_p}`;
+}
+
+
 describe('icon-svg', () => {
   let div;
   let instance;
@@ -68,8 +79,8 @@ describe('icon-svg', () => {
     });
     setTimeout(() => {
       const child = TestUtils.scryRenderedDOMComponentsWithTag(instance, 'path');
-      console.log(child[0].style);
-      const scale = child[0].style.transform.split('scale(')[1].split(')')[0].split(',');
+      const scale = child[0].style[checkStyleName('transform')]
+        .split('scale(')[1].split(')')[0].split(',');
       console.log(scale);
       expect(scale.length).to.be(2);
       done();
