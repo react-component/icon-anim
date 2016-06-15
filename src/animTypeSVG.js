@@ -173,7 +173,7 @@ export default {
       { d: 'M855,510 L558,510', duration: 200 },
       { d: 'M170,510 L465,510', duration: 0 },
       { d: 'M170,510 L465,795', duration: 300, ease: 'easeOutBack' },
-    ]
+    ],
   ],
   arrowlefttoarrowright: [
     [
@@ -185,7 +185,7 @@ export default {
       { d: 'M170,510 L465,510', duration: 200 },
       { d: 'M855,510 L558,510', duration: 0 },
       { d: 'M855,510 L558,795', duration: 300, ease: 'easeOutBack' },
-    ]
+    ],
   ],
   arrowuptoarrowdown: [
     [
@@ -196,8 +196,8 @@ export default {
     [
       { d: 'M515,165 L515,465', duration: 200 },
       { d: 'M515,850 L515,555', duration: 0 },
-      { d: 'M515,850 L795,555', duration: 300, ease: 'easeOutBack' }
-    ]
+      { d: 'M515,850 L795,555', duration: 300, ease: 'easeOutBack' },
+    ],
   ],
   arrowdowntoarrowup: [
     [
@@ -208,7 +208,7 @@ export default {
     [
       { d: 'M515,850 L515,555', duration: 200 },
       { d: 'M515,165 L515,465', duration: 0 },
-      { d: 'M515,165 L790,465', duration: 300, ease: 'easeOutBack' }
-    ]
+      { d: 'M515,165 L790,465', duration: 300, ease: 'easeOutBack' },
+    ],
   ],
 };

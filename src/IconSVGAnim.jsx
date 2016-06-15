@@ -79,8 +79,7 @@ class IconSVGAnim extends Component {
     let rx;
     let ry;
     switch (name) {
-      case 'CIRCLE':
-      {
+      case 'CIRCLE': {
         cx = parseFloat(props.cx);
         cy = parseFloat(props.cy);
         const r = parseFloat(props.r);
@@ -92,8 +91,7 @@ class IconSVGAnim extends Component {
           d: `M${cx - r},${cy} a${r},${r} 0 1,0 ${r * 2},0a${r},${r} 0 1,0 ${-r * 2},0z`,
         };
       }
-      case 'ELLIPSE':
-      {
+      case 'ELLIPSE': {
         cx = parseFloat(props.cx);
         cy = parseFloat(props.cy);
         rx = parseFloat(props.rx);
@@ -107,8 +105,7 @@ class IconSVGAnim extends Component {
           d: `M${cx - rx},${cy}a${rx},${ry} 0 1,0 ${rx * 2},0a${rx},${ry} 0 1,0 ${-rx * 2},0z`,
         };
       }
-      case 'RECT':
-      {
+      case 'RECT': {
         const x = parseFloat(props.x);
         const y = parseFloat(props.y);
         const w = parseFloat(props.width);
@@ -137,8 +134,7 @@ l0,${ry * 2 - h}
 a${rx},${ry} 0 0,1 ${rx},${-ry}z`,
         };
       }
-      case 'POLYGON':
-      {
+      case 'POLYGON': {
         const points = parseFloat(props.points);
         delete props.points;
         const p = points.split(/\s+/);
@@ -148,8 +144,7 @@ a${rx},${ry} 0 0,1 ${rx},${-ry}z`,
         }
         return { ...props, d: `${path}z` };
       }
-      case 'LINE':
-      {
+      case 'LINE': {
         const x1 = parseFloat(props.x1);
         const x2 = parseFloat(props.x2);
         const y1 = parseFloat(props.y1);
@@ -160,8 +155,7 @@ a${rx},${ry} 0 0,1 ${rx},${-ry}z`,
         delete props.y2;
         return { ...props, d: `M${x1},${y1}L${x2},${y2}z` };
       }
-      default:
-      {
+      default: {
         return { ...props };
       }
     }

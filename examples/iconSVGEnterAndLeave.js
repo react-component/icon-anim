@@ -29,7 +29,7 @@ class Demo extends React.Component {
     let animation;
     if (this.state.show) {
       animation = [
-        { style: { SVGDraw: '100% 100%', opacity: 0 }, },
+        { style: { SVGDraw: '100% 100%', opacity: 0 } },
         { style: { SVGDraw: '100% 100%', opacity: 0 }, delay: 100 },
       ];
     } else {
