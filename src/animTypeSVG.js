@@ -29,22 +29,22 @@ export default {
   ],
   uptodown: [
     [
-      { d: 'M511.5,722.5L511.5,299.5', duration: 200 },
-      { d: 'M511.5,722.5L171.5,301.5', ease: 'easeOutBack', duration: 350 },
+      { d: 'M510,300L510,725', duration: 200 },
+      { d: 'M172,300L510,725', ease: 'easeOutBack', duration: 350 },
     ],
     [
-      { d: 'M511.5,722.5L511.5,299.5', duration: 200 },
-      { d: 'M511.5,722.5L852.5,300.5', ease: 'easeOutBack', duration: 350 },
+      { d: 'M510,300L510,725', duration: 200 },
+      { d: 'M852,300L510,725', ease: 'easeOutBack', duration: 350 },
     ],
   ],
   downtoup: [
     [
-      { d: 'M511.5,722.5L511.5,299.5', duration: 200 },
-      { d: 'M171.5,722.5L511.5,299.5', ease: 'easeOutBack', duration: 300 },
+      { d: 'M510,300L510,725', duration: 200 },
+      { d: 'M510,300L172,725', ease: 'easeOutBack', duration: 300 },
     ],
     [
-      { d: 'M511.5,722.5L511.5,299.5', duration: 200 },
-      { d: 'M852.5,724.5L511.5,299.5', ease: 'easeOutBack', duration: 300 },
+      { d: 'M510,300L510,725', duration: 200 },
+      { d: 'M510,300L852,725', ease: 'easeOutBack', duration: 300 },
     ],
   ],
   lefttoright: [
@@ -162,5 +162,53 @@ export default {
         style: { rotate: 0, x: '0%' },
       },
     ],
+  ],
+  arrowrighttoarrowleft: [
+    [
+      { d: 'M855,510 L558,510', duration: 200 },
+      { d: 'M170,510 L465,510', duration: 0 },
+      { d: 'M170,510 L465,225', duration: 300, ease: 'easeOutBack' },
+    ],
+    [
+      { d: 'M855,510 L558,510', duration: 200 },
+      { d: 'M170,510 L465,510', duration: 0 },
+      { d: 'M170,510 L465,795', duration: 300, ease: 'easeOutBack' },
+    ]
+  ],
+  arrowlefttoarrowright: [
+    [
+      { d: 'M170,510 L465,510', duration: 200 },
+      { d: 'M855,510 L558,510', duration: 0 },
+      { d: 'M855,510 L558,225', duration: 300, ease: 'easeOutBack' },
+    ],
+    [
+      { d: 'M170,510 L465,510', duration: 200 },
+      { d: 'M855,510 L558,510', duration: 0 },
+      { d: 'M855,510 L558,795', duration: 300, ease: 'easeOutBack' },
+    ]
+  ],
+  arrowuptoarrowdown: [
+    [
+      { d: 'M515,165 L515,465', duration: 200 },
+      { d: 'M515,850 L515,555', duration: 0 },
+      { d: 'M515,850 L225,555', duration: 300, ease: 'easeOutBack' },
+    ],
+    [
+      { d: 'M515,165 L515,465', duration: 200 },
+      { d: 'M515,850 L515,555', duration: 0 },
+      { d: 'M515,850 L795,555', duration: 300, ease: 'easeOutBack' }
+    ]
+  ],
+  arrowdowntoarrowup: [
+    [
+      { d: 'M515,850 L515,555', duration: 200 },
+      { d: 'M515,165 L515,465', duration: 0 },
+      { d: 'M515,165 L230,465', duration: 300, ease: 'easeOutBack' },
+    ],
+    [
+      { d: 'M515,850 L515,555', duration: 200 },
+      { d: 'M515,165 L515,465', duration: 0 },
+      { d: 'M515,165 L790,465', duration: 300, ease: 'easeOutBack' }
+    ]
   ],
 };

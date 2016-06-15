@@ -20,6 +20,8 @@ const typeData = {
   'doubleleft-doubleright': 'doubleleft与doubleright',
   'caretdown-caretup': 'caretdown与caretup',
   'caretleft-caretright': 'caretleft与caretright',
+  'arrowright-arrowleft': 'arrowright与arrowleft',
+  'arrowup-arrowdown': 'arrowup与arrowdown',
 };
 
 class Demo extends React.Component {
@@ -29,8 +31,8 @@ class Demo extends React.Component {
       'onClick',
       'onChange',
     ].forEach((method) => this[method] = this[method].bind(this));
-    this.defalutType = 'caretleft';
-    this.changeType = 'caretright';
+    this.defalutType = 'arrowup';
+    this.changeType = 'arrowdown';
     this.state = {
       type: this.defalutType,
     };
@@ -70,7 +72,7 @@ class Demo extends React.Component {
             icon 样式：
             <Select style={{ width: 250 }}
               placeholder="请选择"
-              defaultValue={`${this.defalutType}to${this.changeType}`}
+              defaultValue={`${this.defalutType}-${this.changeType}`}
               onChange={this.onChange}
             >
               {Object.keys(typeData).map(key =>

@@ -1,24 +1,24 @@
 import React from 'react';
 export default {
   cross: [
-    <path d="M229.5,229.5 L794.5,794.5" strokeWidth="79" />,
-    <path d="M794.5,229.5 L229.5,794.5" strokeWidth="79" />,
+    <path d="M230,230 L795,795" strokeWidth="87" />,
+    <path d="M795,230 L230,795" strokeWidth="87" />,
   ],
   check: [
-    <path d="M168.5,497.5 L327.5,777.5" strokeWidth="79" />,
-    <path d="M856.5,246.5 L327.5,777.5" strokeWidth="79" />,
+    <path d="M168,497 L327,777" strokeWidth="87" />,
+    <path d="M855,245 L327,777" strokeWidth="87" />,
   ],
   plus: [
-    <path d="M160.5,512L863.61,512" strokeWidth="79" />,
-    <path d="M509.5,165.5L509.5,859.66" strokeWidth="79" />,
+    <path d="M160,510L860,510" strokeWidth="87" />,
+    <path d="M510,160L510,860" strokeWidth="87" />,
   ],
   up: [
-    <path d="M171.5,722.5 L511.5,299.5" strokeWidth="87" />,
-    <path d="M852.5,724.5 L511.5,299.5" strokeWidth="87" />,
+    <path d="M510,300L172,725" strokeWidth="87" />,
+    <path d="M510,300L852,725" strokeWidth="87" />,
   ],
   down: [
-    <path d="M171.5,301.5 L511.5,722.5" strokeWidth="87" />,
-    <path d="M852.5,300.5 L511.5,722.5" strokeWidth="87" />,
+    <path d="M172,300L510,725" strokeWidth="87" />,
+    <path d="M852,300L510,725" strokeWidth="87" />,
   ],
   left: [
     <path d="M300,510L725,172" strokeWidth="87" />,
@@ -59,5 +59,25 @@ export default {
     <path d="M76.3,632.8l405.1-489.1c16.9-18.9,46.5-18.9,63.4,0
     l403.1,489.1c24.4,27.4,5,70.8-31.7,70.8H107.9C71.3,703.6,51.8,660.2,76.3,632.8z"
     />,
+  ],
+  arrowright: [
+    <path d="M855,510 L558,225" strokeWidth="87" />,
+    <path d="M855,510 L558,795" strokeWidth="87" />,
+    <path d="M170,510 L855,510" strokeWidth="87" />,
+  ],
+  arrowleft: [
+    <path d="M170,510 L465,225" strokeWidth="87" />,
+    <path d="M170,510 L465,795" strokeWidth="87" />,
+    <path d="M170,510 L855,510" strokeWidth="87" />,
+  ],
+  arrowup: [
+    <path d="M515,165 L230,465" strokeWidth="87" />,
+    <path d="M515,165 L790,465" strokeWidth="87" />,
+    <path d="M515,850 L515,165" strokeWidth="87" />,
+  ],
+  arrowdown: [
+    <path d="M515,850 L225,555" strokeWidth="87" />,
+    <path d="M515,850 L795,555" strokeWidth="87" />,
+    <path d="M515,850 L515,165" strokeWidth="87" />,
   ],
 };
