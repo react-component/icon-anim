@@ -47,7 +47,7 @@
     "react-dom": "~15.0.0"
   },
   "dependencies": {
-    "antd": "~1.3.0",
+    "antd": "~3.11.2",
     "rc-tween-one": "^0.6.8"
   },
   "pre-commit": [
