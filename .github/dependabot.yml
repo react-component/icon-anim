@@ -1,0 +1,18 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "21:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: rc-tools
+    versions:
+    - "< 10, >= 9.a"
+  - dependency-name: rc-tween-one
+    versions:
+    - "< 3, >= 2.a"
+  - dependency-name: react
+    versions:
+    - 17.0.1
